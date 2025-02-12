@@ -1,11 +1,22 @@
+using FagDag.EfCore.Api.Services;
+using FagDag.EfCore.Database;
+using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+
+builder.Services.AddDbContext<EpicEventsDbContext>(options =>
+{
+    options.UseInMemoryDatabase("EpicEvents");
+});
+builder.Services.AddScoped<IEpicEventsService, EpicEventsService>();
+
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
+
 
 var app = builder.Build();
 
