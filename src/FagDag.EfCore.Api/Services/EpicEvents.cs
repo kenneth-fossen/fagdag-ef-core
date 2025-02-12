@@ -33,4 +33,3 @@ public interface IEpicEventsService
 public record ParticipantsDto;
 
 public record RaceDto;
-

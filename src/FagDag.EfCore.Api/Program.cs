@@ -1,6 +1,5 @@
 using FagDag.EfCore.Api.Services;
 using FagDag.EfCore.Database;
-using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,10 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 
-builder.Services.AddDbContext<EpicEventsDbContext>(options =>
-{
-    options.UseInMemoryDatabase("EpicEvents");
-});
+builder.Services.AddDbContext<EpicEventsDbContext>();
 builder.Services.AddScoped<IEpicEventsService, EpicEventsService>();
 
 builder.Services.AddOpenApi();
