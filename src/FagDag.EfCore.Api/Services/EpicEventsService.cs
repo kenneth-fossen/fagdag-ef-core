@@ -26,16 +26,3 @@ public class EpicEventsService(EpicEventsDbContext DbContext) : IEpicEventsServi
         return new ParticipantsDto(1);
     }
 }
-
-public interface IEpicEventsService
-{
-    Task<IEnumerable<EventDto>> GetAllEventsAsync();
-    Task<EventDto> GetEventByIdAsync(Guid id);
-    Task<IEnumerable<ParticipantsDto>> GetAllParticipantsAsync();
-
-    Task<ParticipantsDto> GetParticipantByIdAsync(int id);
-}
-
-public record ParticipantsDto(int Id);
-
-public record EventDto(Guid Id);
