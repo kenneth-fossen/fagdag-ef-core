@@ -8,7 +8,7 @@ public class EpicEventsDbContext(DbContextOptions<EpicEventsDbContext> options) 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite($"Data Source={DbPath}");
+
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
