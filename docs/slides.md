@@ -5,10 +5,10 @@ theme: dracula
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://cover.sli.dev
 # some information about your slides (markdown enabled)
-title: Fagdag - .NET EF Core Essentials
+title: FagDag - .NET EF Core Essentials
 info: |
-  ## Fagdag: .NET EF Core Essentials
-   
+  ## FagDag: .NET EF Core Essentials
+
 # apply unocss classes to the current slide
 class: text-center
 # https://sli.dev/features/drawing
@@ -20,7 +20,7 @@ transition: slide-left
 mdc: true
 ---
 
-# Fagdag: .NET EF Core Essentials
+# FagDag: .NET EF Core Essentials
 
 Presentation slides for developers
 
@@ -46,12 +46,13 @@ layout: center
 [https://github.com/kenneth-fossen/fagdag-ef-core](https://github.com/kenneth-fossen/fagdag-ef-core)
 
 Select `Use this template` -> `Create new Repo`
+Then Clone Repo to you computer
 
 ---
 
 # Todays Topics
 
-<v-clicks> 
+<v-clicks>
 
 - Introduction to EF Core
 - Short overview:
@@ -279,6 +280,8 @@ layout: two-cols
 ::default::
 # Split Query
 
+// TODO: IS this example correct?
+
 ```sql
 SELECT a."Id", a."Name"
 FROM "Artists" AS a
@@ -324,7 +327,7 @@ ORDER BY a."Id", a0."Id"
 
 <!--
 - Pre-convention model configuration
-	- You can configure default matppers for e.g. all string in a model/databasecontext.
+	- You can configure default mappers for e.g. all string in a model/databasecontext.
 
 Compiled models
  -	For databases with many relations, 100s to 1000s entity types and relationsships.
@@ -340,7 +343,7 @@ Compiled models
 
 - Faster `SaveChanges`
   - 4x times faster than EF Core 6
-  - Has fewer roundtrips to the database when saving
+  - Has fewer round trips to the database when saving
 
 - `Encrypt` defaults to `true` for SQL Server connections
 
@@ -415,7 +418,7 @@ public class BloggingContext : DbContext
     public DbSet<Blog> Blogs { get; set; }
 
     protected override void OnConfigure(DbContextOptionsBuilder o) {
-      o.UseSqlServer("connectionString");
+      o.UseSqlServer("connectionString"); // Note: Can be done in e.g. API also
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -518,7 +521,7 @@ dotnet ef migrations list
 # Task 4: Seeding
 
 - Seed some data
-- Install usefull library
+- Install useful library
 - Be sure to have applied any migrations before seeding
 
 
@@ -527,7 +530,7 @@ dotnet ef migrations list
 
 # Task 5: Querying
 
-- Implemeting the service for querying events
+- Implementing the service for querying events
 - Update the model and seeding the database with new data
 - Implement a controller to handle requests for participants
 
@@ -599,7 +602,7 @@ If you are only reading from the database, there there is no need to track the e
 
 <v-click>
 
-<p>Perfomance <mdi-lightning-bolt class="text-2xl text-yellow" /></p>
+<p>Performance <mdi-lightning-bolt class="text-2xl text-yellow" /></p>
 
 - Can use ~4x **less** memory
 - Can be ~5x **faster**
@@ -695,4 +698,4 @@ WHERE [b].[Rating] < 3
 - Context Pooling
 - Change Database Provider
 - Multiple Contexts
-- Connection Resiliance
+- Connection Resilience
