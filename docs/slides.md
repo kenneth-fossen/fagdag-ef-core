@@ -1,16 +1,14 @@
 ---
 # You can also start simply with 'default'
-theme: seriph
+theme: dracula
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://cover.sli.dev
 # some information about your slides (markdown enabled)
-title: Welcome to Slidev
+title: Fagdag - .NET EF Core Essentials
 info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
+  ## Fagdag: .NET EF Core Essentials
+   
 # apply unocss classes to the current slide
 class: text-center
 # https://sli.dev/features/drawing
@@ -22,7 +20,7 @@ transition: slide-left
 mdc: true
 ---
 
-# Welcome to Slidev
+# Fagdag: .NET EF Core Essentials
 
 Presentation slides for developers
 
@@ -39,598 +37,662 @@ Presentation slides for developers
   </a>
 </div>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
-
 ---
-transition: fade-out
+layout: center
 ---
 
-# What is Slidev?
+# Repository
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
+[https://github.com/kenneth-fossen/fagdag-ef-core](https://github.com/kenneth-fossen/fagdag-ef-core)
 
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - themes can be shared and re-used as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embed Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/features/slide-scope-style
--->
-
-<style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-}
-</style>
-
-<!--
-Here is another comment.
--->
+Select `Use this template` -> `Create new Repo`
 
 ---
-transition: slide-up
-level: 2
----
 
-# Navigation
+# Todays Topics
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/ui#navigation-bar)
+<v-clicks> 
 
-## Keyboard Shortcuts
+- Introduction to EF Core
+- Short overview:
+  - 5 -> 6 -> 7 -> 8 -> 9
+- Theory and Practice
+- Task: DbContext Configuration & Modeling
+- Task: Migrations
+- Task: Seeding
+- Task: Querying
+- Task: Exploring
 
-|                                                     |                             |
-| --------------------------------------------------- | --------------------------- |
-| <kbd>right</kbd> / <kbd>space</kbd>                 | next animation or slide     |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd>                                       | previous slide              |
-| <kbd>down</kbd>                                     | next slide                  |
-
-<!-- https://sli.dev/guide/animations.html#click-animation -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
-
----
-layout: two-cols
-layoutClass: gap-16
----
-
-# Table of contents
-
-You can use the `Toc` component to generate a table of contents for your slides:
-
-```html
-<Toc minDepth="1" maxDepth="1" />
-```
-
-The title will be inferred from your slide content, or you can override it with `title` and `level` in your frontmatter.
-
-::right::
-
-<Toc text-sm minDepth="1" maxDepth="2" />
+</v-clicks>
 
 ---
 layout: image-right
-image: https://cover.sli.dev
+transition: fade-out
+image: ./assets/kbo.jpg
 ---
-
-# Code
-
-Use code snippets and get the highlighting directly, and even types hover!
-
-```ts {all|5|7|7-8|10|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-
-import { computed, ref } from 'vue'
-
-const count = ref(0)
-const doubled = computed(() => count.value * 2)
-
-doubled.value = 2
-```
-
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="334" color="#953" width="2" arrowSize="1" />
-
-<!-- This allow you to embed external code blocks -->
-<<< @/snippets/external.ts#snippet
-
-<!-- Footer -->
-
-[Learn more](https://sli.dev/features/line-highlighting)
-
-<!-- Inline style -->
-<style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
-
-<!--
-Notes can also sync with clicks
-
-[click] This will be highlighted after the first click
-
-[click] Highlighted with `count = ref(0)`
-
-[click:3] Last click (skip two clicks)
--->
-
----
-level: 2
----
-
-# Shiki Magic Move
-
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
-
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
-
-````md magic-move {lines: true}
-```ts {*|2|*}
-// step 1
-const author = reactive({
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-})
-```
-
-```ts {*|1-2|3-4|3-4,8}
-// step 2
-export default {
-  data() {
-    return {
-      author: {
-        name: 'John Doe',
-        books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
-        ]
-      }
-    }
-  }
-}
-```
-
-```ts
-// step 3
-export default {
-  data: () => ({
-    author: {
-      name: 'John Doe',
-      books: [
-        'Vue 2 - Advanced Guide',
-        'Vue 3 - Basic Guide',
-        'Vue 4 - The Mystery'
+# $ whoami
+```hs {1|2-5|6-9|10-12|all}
+$ whoami
+{
+     name: Kenneth Fossen,
+     dep: Dragefjellet@Bouvet,
+     email: kenneth.fossen@bouvet.no,
+     edu: [
+         Bachelor i Datatryggleik
+         Master i Programvare Utvikling
+     ],
+     current: [
+          project: {
+              name: CommonLibrary@Equinor
+          },
+          Software Developer,
+          Security Champion,
+          #rustaceans, #bergen-labben, #boffvet
+      ],
+      hobbies: [
+        "dogs",
+        "reading",
+        "ultra-running"
       ]
-    }
-  })
-}
+ }
 ```
+---
+layout: center
+---
 
-Non-code blocks are ignored.
-
-```vue
-<!-- step 4 -->
-<script setup>
-const author = {
-  name: 'John Doe',
-  books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
-  ]
-}
-</script>
-```
-````
+# What are your expectations?
 
 ---
 
-# Components
+# What is EF Core
 
-<div grid="~ cols-2 gap-4">
-<div>
+EF Core *can* serve as a object-relational-mapper (O/RM)
 
-You can use Vue components directly inside your slides.
+<v-clicks>
 
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
+- Enabling .NET developers to work with a database using .NET Objects
+- Eliminates the need for most of the data-access code that typically need to be written.
+- It gives you migrations that allow evolving the database as the model changes.
 
-```html
-<Counter :count="10" />
-```
+</v-clicks>
 
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
+---
+layout: two-cols
+title: "EF vs EF Core"
+hideInToc: true
+---
+::default::
+# EF
 
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
+<v-clicks>
 
-</div>
-<div>
+- EF6 is a ORM for .NET Framework
+- Supports also .NET Core
+- No longer developed
 
-```html
-<Tweet id="1390115482657726468" />
-```
+</v-clicks>
 
-<Tweet id="1390115482657726468" scale="0.65" />
+::right::
+# EF Core
 
-</div>
-</div>
+<v-clicks>
+
+- EF Core is modern ORM for .NET
+- Support for LINQ
+- Change Tracking
+- Updates
+- Schema Migrations
+
+</v-clicks>
 
 <!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
+	EF6 is a object-relational mapper desined fro .NET Framework, but with support for .NET Core.
+  This is no longer actively developed.
 
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
+  EF Core is the modern object-database mapper for .NET
+  Support for LINQ queries, change tracking, updates, and schema migrations.
+-->
+
+
+---
+layout: two-cols-header
+---
+
+### DbContext : Example C# Code
+
+```ts {all|8-13}
+public class BloggingContext : DbContext
+{
+    public DbSet<Blog> Blogs { get; set; }
+
+    protected override void OnConfigure(DbContextOptionsBuilder o) {
+      o.UseSqlServer("connectionString");
+    }
+}
+public class Blog
+{
+    public int BlogId { get; set; }
+    public string Url { get; set; }
+    public int Rating { get; set; }
+}
+```
+
+<div v-click="1">
+  <Arrow x1="350" y1="300" x2="450" y2="350" />
 </div>
+::right::
+
+### Database table
+
+| BlogId | Url | Rating |
+| --- | --- | --- |
+| 1 | http://blog.kefo.no | 5 |
+
+---
+
+# LINQ to SQL
+
+```ts {all|2|4-5,11-12|6,13|7,14|8|all}
+// C# Code
+using var db = new BloggingContext();
+
+var blogs = db
+    .Blogs
+    .Where(b => b.Rating > 3)
+    .OrderBy(b => b.Url)
+    .ToList(); // Query and fetch data into memory
+
+// SQL OUTPUT
+SELECT a."BlogId", a."Url", a."Rating"
+FROM "Blogs" as a
+WHERE a."Rating" > 3
+ORDER BY a."Url"
+```
+
+---
+layout: iframe-right
+url: https://dapperlib.github.io/Dapper/
+---
+
+# Alternative: Dapper
+
+<v-clicks>
+
+- A simple object mapper for .NET
+- Know to be the fastest
+- Low memory footprint (compared to EF Core)
+- Complete control over your SQL Queries
+- Goto solution when performance is critical
+
+</v-clicks>
+
+<!---
+	It is a simple object mapper for .NET, know to be the fastest, and has the least memory overhead.
+
+	You can write raw SQL parameterized queries.
+
+  It give good performance and complete control over the queries, and is considered the goto solution when it is performance critical.
 -->
 
 ---
-class: px-20
----
 
-# Themes
+# Short overview
 
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
 
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
-
+<div class="gird-flow-row">
+  <div class="col-span-2">
+    <h2> 5 -> 6 -> 7 -> 8 -> 9</h2>
+  </div>
+  <img src="/assets/efcore.png" class="ml-100 mt-10 h-60">
 </div>
 
-Read more about [How to use a theme](https://sli.dev/guide/theme-addon#use-theme) and
-check out the [Awesome Themes Gallery](https://sli.dev/resources/theme-gallery).
-
 ---
 
-# Clicks Animations
-
-You can add `v-click` to elements to add a click animation.
-
-<div v-click>
-
-This shows up when you click the slide:
-
-```html
-<div v-click>This shows up when you click the slide.</div>
-```
-
-</div>
+# EF Core 5
 
 <br>
+<v-click>
+
+  <p class="text-3xl"><mdi-alert class="text-yellow"/> Query Strategy Changed <mdi-alert class="text-yellow"/></p>
+
+  - Performance
+  - Complex Queries that was fast **may** be slow
+
+</v-click>
 
 <v-click>
 
-The <span v-mark.red="3"><code>v-mark</code> directive</span>
-also allows you to add
-<span v-mark.circle.orange="4">inline marks</span>
-, powered by [Rough Notation](https://roughnotation.com/):
+Lets study this code
 
-```html
-<span v-mark.underline.orange>inline markers</span>
+```ts {all|2|3|all}
+var artists = context
+    .Artists
+    .Include(e => e.Albums)
+    .ToList();
 ```
 
 </v-click>
 
-<div mt-20 v-click>
+---
+layout: two-cols
+---
+::default::
+# Split Query
 
-[Learn more](https://sli.dev/guide/animations#click-animation)
+```sql
+SELECT a."Id", a."Name"
+FROM "Artists" AS a
+ORDER BY a."Id"
 
-</div>
+SELECT a0."Id", a0."ArtistId", a0."Title", a."Id"
+FROM "Artists" AS a
+INNER JOIN "Album" AS a0 ON a."Id" = a0."ArtistId"
+ORDER BY a."
+```
+
+::right::
+
+# Combined Query
+
+```sql
+SELECT a."Id", a."Name",
+       a0."Id", a0."ArtistId", a0."Title"
+FROM "Artists" AS a
+LEFT JOIN "Album" AS a0 ON a."Id" = a0."ArtistId"
+ORDER BY a."Id", a0."Id"
+
+```
 
 ---
 
-# Motions
-
-Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), triggered by `v-motion` directive.
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }"
-  :click-3="{ x: 80 }"
-  :leave="{ x: 1000 }"
->
-  Slidev
-</div>
-```
-
-<div class="w-60 relative">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-square.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-circle.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-triangle.png"
-      alt=""
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 30, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn more](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
----
-
-# LaTeX
-
-LaTeX is supported out-of-box. Powered by [KaTeX](https://katex.org/).
-
-<div h-3 />
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$ {1|3|all}
-\begin{aligned}
-\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} \\
-\nabla \cdot \vec{B} &= 0 \\
-\nabla \times \vec{E} &= -\frac{\partial\vec{B}}{\partial t} \\
-\nabla \times \vec{B} &= \mu_0\vec{J} + \mu_0\varepsilon_0\frac{\partial\vec{E}}{\partial t}
-\end{aligned}
-$$
-
-[Learn more](https://sli.dev/features/latex)
-
----
-
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-4 gap-5 pt-4 -mb-6">
-
-```mermaid {scale: 0.5, alt: 'A simple sequence diagram'}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```mermaid
-mindmap
-  root((mindmap))
-    Origins
-      Long history
-      ::icon(fa fa-book)
-      Popularisation
-        British popular psychology author Tony Buzan
-    Research
-      On effectiveness<br/>and features
-      On Automatic creation
-        Uses
-            Creative techniques
-            Strategic planning
-            Argument mapping
-    Tools
-      Pen and paper
-      Mermaid
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
-</div>
-
-Learn more: [Mermaid Diagrams](https://sli.dev/features/mermaid) and [PlantUML Diagrams](https://sli.dev/features/plantuml)
-
----
-foo: bar
-dragPos:
-  square: 691,32,167,_,-16
----
-
-# Draggable Elements
-
-Double-click on the draggable elements to edit their positions.
+# EF Core 6
 
 <br>
 
-###### Directive Usage
+<v-clicks>
 
-```md
-<img v-drag="'square'" src="https://sli.dev/logo.png">
+- SQL Server temporal tables
+- Migration Bundles
+- Pre-convention model configuration
+- Compiled models
+- Performance
+	- 70% better query performance than EF Core 5.0
+	- 31% afaster executing untracked queries
+	- Heap allocations have been reduced by 43%
+
+</v-clicks>
+
+<!--
+- Pre-convention model configuration
+	- You can configure default matppers for e.g. all string in a model/databasecontext.
+
+Compiled models
+ -	For databases with many relations, 100s to 1000s entity types and relationsships.
+- 	The startup time until the first operation is done on the DbContext, may be more than expected, and Compiled models may helps in this case.
+
+-->
+
+---
+
+# EF Core 7
+
+<v-clicks>
+
+- Faster `SaveChanges`
+  - 4x times faster than EF Core 6
+  - Has fewer roundtrips to the database when saving
+
+- `Encrypt` defaults to `true` for SQL Server connections
+
+Consequences, you need a **valid** certificate on the SQL Server.
+The client must trust this certificate
+2 ways to mitigate this:
+  - `TrustServerCertificate=True`
+  - `Encrypt=False`
+
+</v-clicks>
+
+---
+
+# EF Core 8
+
+<v-clicks>
+
+- Close to Dapper Performance and Memory Consumption
+- Raw SQL queries for unmapped types
+- DateOnly/TimeOnly support for SQL Server
+
+- `.Contains()` in LINQ queries may stop working on older SQL Server versions.
+- Only supports SQL Server 2014 above
+
+</v-clicks>
+
+---
+
+# EF Core 9
+
+<v-clicks>
+
+- `UseSeeding` is new
+- `dotnet ef migrations has-pending-model-changes`
+- `UseAzureSynapse()` or `UseAzureSql()`
+- Complex types: `GroupBy` and `ExecuteUpdate`
+
+</v-clicks>
+
+
+
+---
+layout: image-right
+image: ./assets/boisy_kion.jpg
+---
+
+# PAUSE
+
+---
+
+# Task 1: Getting Ready
+
+Ensuring everyone have:
+
+- Installed .NET
+- EF Core CLI tools
+- Have the code
+- Can build and run the project
+- Explore the project in the IDE
+
+---
+
+# Task 2: Task: DbContext Configuration & Simple Modeling
+
+- Create the model for `Events`
+
+---
+
+```ts {all|1|1-3|5-7|9-15|18-24}
+public class BloggingContext : DbContext
+{
+    public DbSet<Blog> Blogs { get; set; }
+
+    protected override void OnConfigure(DbContextOptionsBuilder o) {
+      o.UseSqlServer("connectionString");
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+      modelBuilder
+        .Entity<Blog>()
+        .HasIndex(e => e.Name)
+        .HasDatabaseName("IX_Names_Ascending");
+    }
+}
+
+public class Blog
+{
+    public int BlogId { get; set; }
+    public string Url { get; set; }
+    public string Name { get; set; }
+    public int Rating { get; set; }
+}
 ```
 
+---
+
+# EntityTypeConfigurationAttribute
+
+```ts {0-11|13-16|all}
+class TblSalesConfiguration : IEntityTypeConfiguration<TblSales>
+{
+    public void Configure(EntityTypeBuilder<TblSales> builder)
+    {
+        builder.ToTable("Sales");
+
+        builder
+            .HasIndex(t => t.Name)
+            .IsUnique();
+    }
+}
+
+// Inside DBContext
+protected override void OnModelCreating(ModelBuilder modelBuilder) {
+  new TblSalesConfiguration()
+    .Configure(modelBuilder.Entity<TblSales>());
+}
+```
+
+---
+
+# Data annotations
+
+Use data annotations to configure a model
+
+```ts
+[Table("Books")]
+class Book {
+
+  [Required]
+  [MaxLength(100)]
+  public string Title { get; set; }
+}
+```
+
+
+---
+
+# Modeling tips
+
+Use Data Annotation to limit e.g. size of your types
+e.g. `string`
+
+```ts{1|1-4|1,6-7|9-10|all}
+public string Name { get; set; }
+
+// SQL produced
+Name nvarchar(max) -- (2GB)
+
+[StringLength(64)] // nvarchar(64)
+public string Name { get; set; }
+
+[MinLength(5), MaxLength(12)]
+public string Password { get; set; }
+```
+
+---
+
+# Task 3: Migrations & Database Update
+
+- Usefull commands
+- Create a inital migrations
+- Apply the migration to the database
+- Change the model
+
+
+```shell
+dotnet ef dbcontext info
+dotnet ef migrations has-pending-model-changes
+dotnet ef migrations list
+```
+
+---
+
+# Task 4: Seeding
+
+- Seed some data
+- Install usefull library
+- Be sure to have applied any migrations before seeding
+
+
+
+---
+
+# Task 5: Querying
+
+- Implemeting the service for querying events
+- Update the model and seeding the database with new data
+- Implement a controller to handle requests for participants
+
+<v-clicks>
+
+- `.TagWith("Fetching all users)`
+- `.Select()` does not need .AsNoTracking()
+- Use `-Async` version of the operator e.g (`ToListAsync()`)
+- `Select` to only fetch the right columns
+- An Index will not be used if there are operations on a Column
+
+</v-clicks>
+
+---
+layout: two-cols-header
+---
+
+# Querying: Deadly Sin
+
+::left::
+Casting `IQueryable` to `IEnumerable`
 <br>
 
-###### Component Usage
+<v-clicks>
 
-```md
-<v-drag text-3xl>
-  <div class="i-carbon:arrow-up" />
-  Use the `v-drag` component to have a draggable container!
-</v-drag>
+Examples
+- `.ToList()`
+- `.AsEnumerable()`
+
+<p class="text-3xl"><mdi-alert class="text-yellow"/> Will fetch all the data! <mdi-alert class="text-yellow"/></p>
+
+</v-clicks>
+
+::right::
+
+<v-click>
+
+# Code Example
+
+```ts {1-3|5-9|15-17|10-13|1,15|all}
+public IEnumerable<Sales> GetSales() {
+  return SalesDbContex.Sales;
+}
+
+public int CountSalesInDb() {
+  return GetSales().Count();
+  // SELECT * FROM Sales
+  // in memory count the collection
+}
+public int CountSalesInDb2() {
+  return GetSales2().Count();
+  // SELECT COUNT(*) FROM Sales;
+}
+
+private IQueryable<Sale> GetSales2() {
+   return SalesDbContext.Sales;
+}
 ```
 
-<v-drag pos="663,206,261,_,-15">
-  <div text-center text-3xl border border-main rounded>
-    Double-click me!
-  </div>
-</v-drag>
+</v-click>
 
-<img v-drag="'square'" src="https://sli.dev/logo.png">
+---
 
-###### Draggable Arrow
+# Querying: Deadly Sin
 
-```md
-<v-drag-arrow two-way />
+## Not using `.AsNoTracking()`
+
+If you are only reading from the database, there there is no need to track the entity.
+
+<v-click>
+
+<p>Perfomance <mdi-lightning-bolt class="text-2xl text-yellow" /></p>
+
+- Can use ~4x **less** memory
+- Can be ~5x **faster**
+
+<p class="text-2xl"><mdi-alert class="text-yellow" /> Not for SQLite DB Provider <mdi-alert class="text-yellow" /></p>
+</v-click>
+
+---
+layout: two-cols-header
+---
+
+# Querying: Deadly Sin
+
+::left::
+
+## Explicit Joins
+
+`.Include(x => x.Customers)`
+
+1. They are always included
+2. We get all their columns
+3. Forget to remove them
+
+::right::
+
+# Example
+
+```ts {1-5|4|7-18|16-17|4|10-17|all}
+var explicitQuery = _dbContext.Sales
+    .AsNoTracking()
+    .TagWithContext()
+    .Include(x => x.SalesPerson)
+    .Where(x => x.SalesPersonId == 1);
+
+var implicitQuery = _dbContext.Sales
+    .AsNoTracking()
+    .Where(x => x.SalesPersonId == 1)
+    .Select(x => new SalesWithSalesPerson {
+        CustomerId = x.CustomerId,
+        SalesId = x.SalesPersonId,
+        ProductId = x.ProductId,
+        Quantity = x.Quantity
+        SalesPersonId = x.SalesPersonId,
+        SalesPersonFirstName = x.SalesPerson.FirstName,
+        SalesPersonLastName = x.SalesPersons.LastName
+    });
 ```
 
-<v-drag-arrow pos="67,452,253,46" two-way op70 />
-
 ---
-src: ./pages/imported-slides.md
-hide: false
+layout: two-cols-header
+hideInToc: true
 ---
 
----
+# Querying: Deadly Sin
 
-# Monaco Editor
+## Inefficient Updates and Deletes
 
-Slidev provides built-in Monaco Editor support.
+`foreach` will generate `n` SQL statements
 
-Add `{monaco}` to the code block to turn it into an editor:
+::left::
 
-```ts {monaco}
-import { ref } from 'vue'
-import { emptyArray } from './external'
+# `foreach`
 
-const arr = ref(emptyArray(10))
+```ts
+foreach (var blog in context.Blogs.Where(b => b.Rating < 3))
+{
+    context.Blogs.Remove(blog);
+}
+
+context.SaveChanges();
 ```
 
-Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
+::right::
 
-```ts {monaco-run}
-import { version } from 'vue'
-import { emptyArray, sayHello } from './external'
+# `.ExecuteDelete()`
 
-sayHello()
-console.log(`vue ${version}`)
-console.log(emptyArray<number>(10).reduce(fib => [...fib, fib.at(-1)! + fib.at(-2)!], [1, 1]))
+```ts
+context.Blogs
+  .Where(b => b.Rating < 3)
+  .ExecuteDelete();
+
+// SQL
+DELETE FROM [b]
+FROM [Blogs] AS [b]
+WHERE [b].[Rating] < 3
 ```
 
----
-layout: center
-class: text-center
+
 ---
 
-# Learn More
+# Task 6: Exploring
 
-[Documentation](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/resources/showcases)
-
-<PoweredBySlidev mt-10 />
+- Context Pooling
+- Change Database Provider
+- Multiple Contexts
+- Connection Resiliance
